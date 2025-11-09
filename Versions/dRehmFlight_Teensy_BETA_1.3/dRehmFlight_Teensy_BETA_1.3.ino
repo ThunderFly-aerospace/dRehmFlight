@@ -78,7 +78,7 @@ static const uint8_t num_DSM_channels = 6; //If using DSM RX, change this to mat
   MPU6050 mpu6050;
 #elif defined USE_MPU9250_SPI
   #include "src/MPU9250/MPU9250.h"
-  MPU9250 mpu9250(SPI2,36);
+  MPU9250 mpu9250(SPI1,36);
 #else
   #error No MPU defined... 
 #endif
