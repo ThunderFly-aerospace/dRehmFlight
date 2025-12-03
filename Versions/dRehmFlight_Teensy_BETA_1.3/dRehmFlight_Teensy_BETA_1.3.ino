@@ -160,12 +160,12 @@ float B_gyro = 0.17;      //Gyro LP filter paramter, (MPU6050 default: 0.1. MPU9
 float B_mag = 1.0;        //Magnetometer LP filter parameter
 
 //Magnetometer calibration parameters - if using MPU9250, uncomment calibrateMagnetometer() in void setup() to get these values, else just ignore these
-float MagErrorX = 0;
-float MagErrorY = 0;
-float MagErrorZ = 0;
-float MagScaleX = 1.0;
-float MagScaleY = 1.0;
-float MagScaleZ = 1.0;
+float MagErrorX = 10.29;
+float MagErrorY = 41.11;
+float MagErrorZ = -9.53;
+float MagScaleX = 1.02;
+float MagScaleY = 1.01;
+float MagScaleZ = 0.98;
 
 //IMU calibration parameters - calibrate IMU using calculate_IMU_error() in the void setup() to get these values, then comment out calculate_IMU_error()
 float AccErrorX = 0.0;
