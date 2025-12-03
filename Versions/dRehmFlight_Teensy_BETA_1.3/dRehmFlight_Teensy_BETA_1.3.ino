@@ -160,12 +160,12 @@ float B_gyro = 0.17;      //Gyro LP filter paramter, (MPU6050 default: 0.1. MPU9
 float B_mag = 1.0;        //Magnetometer LP filter parameter
 
 //Magnetometer calibration parameters - if using MPU9250, uncomment calibrateMagnetometer() in void setup() to get these values, else just ignore these
-float MagErrorX = 10.29;
-float MagErrorY = 41.11;
-float MagErrorZ = -9.53;
-float MagScaleX = 1.02;
-float MagScaleY = 1.01;
-float MagScaleZ = 0.98;
+float MagErrorX = 0;
+float MagErrorY = 0;
+float MagErrorZ = 0;
+float MagScaleX = 1.0;
+float MagScaleY = 1.0;
+float MagScaleZ = 1.0;
 
 //IMU calibration parameters - calibrate IMU using calculate_IMU_error() in the void setup() to get these values, then comment out calculate_IMU_error()
 float AccErrorX = 0.0;
@@ -331,7 +331,7 @@ void setup() {
   delay(5);
 
   //Initialize radio communication
-  radioSetup();
+  //radioSetup();
 
   //Set radio channels to default (safe) values before entering main loop
   channel_1_pwm = channel_1_fs;
@@ -402,7 +402,7 @@ void loop() {
   //printGyroData();      //Prints filtered gyro data direct from IMU (expected: ~ -250 to 250, 0 at rest)
   //printAccelData();     //Prints filtered accelerometer data direct from IMU (expected: ~ -2 to 2; x,y 0 when level, z 1 when level)
   //printMagData();       //Prints filtered magnetometer data direct from IMU (expected: ~ -300 to 300)
-  //printRollPitchYaw();  //Prints roll, pitch, and yaw angles in degrees from Madgwick filter (expected: degrees, 0 when level)
+  printRollPitchYaw();  //Prints roll, pitch, and yaw angles in degrees from Madgwick filter (expected: degrees, 0 when level)
   //printPIDoutput();     //Prints computed stabilized PID variables from controller and desired setpoint (expected: ~ -1 to 1)
   //printMotorCommands(); //Prints the values being written to the motors (expected: 120 to 250)
   //printServoCommands(); //Prints the values being written to the servos (expected: 0 to 180)
@@ -442,7 +442,7 @@ void loop() {
 
   //Get vehicle commands for next loop iteration
   getCommands();  //Pulls current available radio commands
-  failSafe();     //Prevent failures in event of bad receiver connection, defaults to failsafe values assigned in setup
+  //failSafe();     //Prevent failures in event of bad receiver connection, defaults to failsafe values assigned in setup
 
   //Regulate loop rate
   loopRate(2000);  //Do not exceed 2000Hz, all filter parameters tuned to 2000Hz by default
